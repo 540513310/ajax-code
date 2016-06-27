@@ -1,0 +1,110 @@
+﻿/*更改jquery ui中button正常状态的背景*/
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+	background: url(../img/ui_header_bg.png);
+}
+/*更改jquery ui中对话框的header的背景颜色*/
+.ui-widget-header {
+	background:url(../img/ui_header_bg.png);
+}
+
+/*更改对话框内button的点击时的背景颜色*/
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+	background:url(../img/ui_white.png);
+}
+body{
+	font-size: 12px;
+	padding: 0;
+	margin: 40px 0 0 0;
+	font-family: 宋体；
+	background:#fff;
+}
+#header{
+	width: 100%;
+	height: 40px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: url(../img/header_bg.png);
+}
+
+.header_main{
+	width: 70%;
+	height: 40px;
+	margin: 0 auto;
+}
+
+.header_main h1{
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	color:#666;
+	height: 40px;
+	line-height: 40px;
+	padding: 0 10px;
+	float: left;
+}
+
+.header_search {
+	padding: 6px 0 0 0;
+	float: left;
+	width: 30%;
+}
+
+.header_button{
+	padding: 5px;
+	float: left;
+}
+
+.search{
+	width: 100%;
+	height: 24px;
+	color: #666;
+	float: left;
+	border:1px solid #ccc;
+
+}
+
+#header .header_menber{
+	float: right;
+	line-height: 40px;
+	height: 40px;
+}
+.header_menber a{
+	text-decoration: none;
+	font-size: 14px;
+	color: #555;	
+}
+
+#reg p .star{
+	color: red;
+	font-size: 14px;
+}
+/*当验证成功时给span添加打勾的背景图片*/
+.succ{
+	width:15px;
+	display: inline-block;
+	background: url(../img/reg_succ.png) no-repeat;
+}
+#reg p label{
+	color: #666;
+	font-size: 14px;
+}
+#reg .text{
+	border-radius: 4px;
+	border:1px solid #ccc;
+	width: 200px;
+	height: 25px;
+	line-height: 25px;
+	background-color: #fff;
+	font-size: 13px;
+	color: #ccc;
+}
+
+#reg ol{
+	padding:0 0 0 20px;
+	margin:0;
+}
+#reg ol li{
+	height: 20px;
+	color: red;
+}
