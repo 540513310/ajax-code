@@ -128,7 +128,7 @@
 			//response(result);
 			response(host_list);
 		},
-	});
+		});
 
 
 	//验证插件的使用
@@ -208,6 +208,12 @@
 			user:{
 				required:true,
 				minlength:2,
+				//把用户填入的字段传到is_user.php,判断用户名是否已经存在，如果已经存在，is_user.php返回false
+				remote:{
+					url:'is_user.php',
+					type:'POST',
+				},
+				
 			},
 			pass:{
 				required:true,
@@ -226,6 +232,8 @@
 			user:{
 				required:'账号不得为空',
 				minlength:jQuery.format('账号不得小于{0}位！'),
+				remote:'该用户名已经存在！',
+				
 			},
 			pass:{
 				required:'密码不得为空',
