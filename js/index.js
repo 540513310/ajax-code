@@ -126,16 +126,23 @@
 					//在按下提交按钮之后，数据提交之前，把‘提交’按钮设置为灰色，以防止用户重复点击
 					$('#reg').dialog('widget').find('button').eq(1).button('disable');
 				},
+				//ajaxsubmit提交成功时执行success里的方法
 				success : function (responseText, statusText) {
+					//如果responseText的值不为真时，表示插入数据成功
+					//（因为在add.php中如果插入成功返回1：echomysql_affected_rows();）
 					if (responseText) {
 						//提交成功后，重新激活‘提交’按钮
 						$('#reg').dialog('widget').find('button').eq(1).button('enable');
+						//提交成功修改loading的图片为打勾
 						$('#loading').css('background', 'url(img/success.gif) no-repeat 20px center').html('数据新增成功...');
 						setTimeout(function () {
 							$('#loading').dialog('close');
 							$('#reg').dialog('close');
+							//成功后重置表单
 							$('#reg').resetForm();
+							//移除打勾图片，并修改为*号
 							$('#reg span.star').html('*').removeClass('succ');
+							//小bug，插入数据成功后，把loading弹出层的内容改回来
 							$('#loading').css('background', 'url(img/loading.gif) no-repeat 20px center').html('数据交互中...');
 						}, 1000);
 					}
@@ -157,6 +164,8 @@
 		//设置当验证出错时input的边框高光
 		highlight:function(element,errorClass){
 			$(element).css('border','1px solid #630');
+			//验证不成功时，移除打勾的符号
+			$(element).parent().find('span').html('*').removeClass('succ');
 		},
 		//当验证正确时，去掉input边框的高光
 		unhighlight:function(element,errorClass){
