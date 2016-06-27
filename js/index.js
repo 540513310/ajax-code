@@ -8,6 +8,25 @@
 		},
 	});
 
+
+	//cookie的使用
+	$('#menber,#logout').hide();
+	if($.cookie('user')){
+		$('#menber,#logout').show();
+		$('#reg_a,#login_a').hide();
+		$('#menber').html($.cookie('user'));
+	}
+	else{
+		$('#reg_a,#login_a').show();
+		$('#menber,#logout').hide();
+	}
+	//当点击‘退出时’
+	$('#logout').click(function(){
+		//移除cookie
+		$.removeCookie('user');
+		//重新定向
+		window.location.href='/ajax-code/';
+	});
 	//loading弹出层
 	$('#loading').dialog({
 		autoOpen:false,
@@ -135,6 +154,8 @@
 						$('#reg').dialog('widget').find('button').eq(1).button('enable');
 						//提交成功修改loading的图片为打勾
 						$('#loading').css('background', 'url(img/success.gif) no-repeat 20px center').html('数据新增成功...');
+						//把注册时的用户名放入cookie中
+						$.cookie('user', $('#user').val());
 						setTimeout(function () {
 							$('#loading').dialog('close');
 							$('#reg').dialog('close');
@@ -144,6 +165,10 @@
 							$('#reg span.star').html('*').removeClass('succ');
 							//小bug，插入数据成功后，把loading弹出层的内容改回来
 							$('#loading').css('background', 'url(img/loading.gif) no-repeat 20px center').html('数据交互中...');
+							//成功提交后，就立即将右上角注册登录更改为用户名和退出
+							$('#menber,#logout').show();
+							$('#reg_a,#login_a').hide();
+							$('#menber').html($.cookie('user'));
 						}, 1000);
 					}
 				},
