@@ -108,3 +108,12 @@ body{
 	height: 20px;
 	color: red;
 }
+
+#loading{
+	background-image: url(../img/loading.gif) no-repeat 20px center;
+	line-height: 25px;
+	font-size: 14px;
+	font-weight: bold;
+	text-indent: 40px;
+	color: #666;
+}

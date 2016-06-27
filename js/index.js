@@ -8,6 +8,21 @@
 		},
 	});
 
+	//loading弹出层
+	$('#loading').dialog({
+		autoOpen:false,
+		modal:true,
+		//当按下Esc时关闭该弹出层
+		closeOnEscape:true,
+		resizable:false,
+		draggable:false,
+		width:180,
+		height:50,
+	});
+
+	//隐藏dialog的标题栏
+	$('#loading').dialog('widget').find('.ui-widget-header').hide();
+
 	$("#reg").dialog({
 		autoOpen:false,
 		modal:true,
@@ -101,7 +116,32 @@
 	$('#reg').validate({
 		// submitHander中的方法只有在验证成功时才会执行，且会阻止默认提交跳转
 		submitHandler:function(form){
-
+			$(form).ajaxSubmit({
+				url : 'add.php',
+				type : 'POST',
+				beforeSubmit:function (formData,jqForm,options){
+					//当点击‘提交’按钮之后自动打开loading窗体
+					$('#loading').dialog('open');
+					//$('#reg')得到的是form对象，$('#reg').dialog('widget')得到的是整个浮动弹出窗体的对象
+					//在按下提交按钮之后，数据提交之前，把‘提交’按钮设置为灰色，以防止用户重复点击
+					$('#reg').dialog('widget').find('button').eq(1).button('disable');
+				},
+				success : function (responseText, statusText) {
+					if (responseText) {
+						//提交成功后，重新激活‘提交’按钮
+						$('#reg').dialog('widget').find('button').eq(1).button('enable');
+						$('#loading').css('background', 'url(img/success.gif) no-repeat 20px center').html('数据新增成功...');
+						setTimeout(function () {
+							$('#loading').dialog('close');
+							$('#reg').dialog('close');
+							$('#reg').resetForm();
+							$('#reg span.star').html('*').removeClass('succ');
+							$('#loading').css('background', 'url(img/loading.gif) no-repeat 20px center').html('数据交互中...');
+						}, 1000);
+					}
+				},
+			});
+			
 		},
 		//当出现错误提示时，会自动调整dialog的高度，
 		showErrors:function(errorMap,errorList){
