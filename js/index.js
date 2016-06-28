@@ -27,18 +27,38 @@
 
 	//隐藏请先登录的提示弹出层的标题栏
 	$('#error').dialog('widget').find('.ui-widget-header').hide();
-	
+
 	//只有登录的用户才能提问
 	$('#question_button').click(function(){
 		//如果有cookie则说明已经登录
 		if ($.cookie('user')) {
 			//弹出提问窗体
-
+			$('#question').dialog('open');
 		}
 		else {
 			$('#error').dialog('open');
+			setTimeout(function(){
+				$('#error').dialog('close');
+				$('#login').dialog('open');
+			},1000);
 		}
 	});
+
+	//提问问题的弹出窗体
+	$('#question').dialog({
+		autoOpen : false,
+		modal : true,
+		resizable : false,
+		width : 500,
+		height : 360,
+		buttons : {
+			'发布' : function () {
+				$(this).submit();
+			}
+		}
+	});
+
+	$('.uEditorCustom').uEditor();
 
 	//cookie的使用
 	$('#menber,#logout').hide();
