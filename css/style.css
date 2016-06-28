@@ -75,7 +75,7 @@ body{
 	color: #555;	
 }
 
-#reg p .star{
+#reg p .star,#login p .star{
 	color: red;
 	font-size: 14px;
 }
@@ -85,11 +85,11 @@ body{
 	display: inline-block;
 	background: url(../img/reg_succ.png) no-repeat;
 }
-#reg p label{
+#reg p label,#login p label{
 	color: #666;
 	font-size: 14px;
 }
-#reg .text{
+#reg .text ,#login .text{
 	border-radius: 4px;
 	border:1px solid #ccc;
 	width: 200px;
@@ -100,11 +100,11 @@ body{
 	color: #ccc;
 }
 
-#reg ol{
+#reg ol,#login ol{
 	padding:0 0 0 20px;
 	margin:0;
 }
-#reg ol li{
+#reg ol li,#login ol li{
 	height: 20px;
 	color: red;
 }
@@ -116,4 +116,10 @@ body{
 	font-weight: bold;
 	text-indent: 40px;
 	color: #666;
+}
+
+#expires{
+	margin:0 0 0 130px;
+	position: relative;
+	top:2px;
 }
