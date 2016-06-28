@@ -118,6 +118,15 @@ body{
 	color: #666;
 }
 
+#error{
+	background: url(../img/error.png) no-repeat 20px center;
+	line-height: 25px;
+	font-size: 14px;
+	font-weight: bold;
+	text-indent: 40px;
+	color: #666;
+}
+
 #expires{
 	margin:0 0 0 130px;
 	position: relative;

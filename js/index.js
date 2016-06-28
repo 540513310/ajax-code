@@ -3,11 +3,42 @@
 		icons:{
 			primary:'ui-icon-search',
 		},
-		size:{
-
-		},
+		
 	});
 
+	$('#question_button').button({
+		icons :{
+			primary:'ui-icon-lightbulb',
+		},
+		
+	});
+
+	//请先登录的提示弹出层
+	$('#error').dialog({
+		autoOpen:false,
+		modal:true,
+		//当按下Esc时关闭该弹出层
+		closeOnEscape:true,
+		resizable:false,
+		draggable:false,
+		width:180,
+		height:50,
+	});
+
+	//隐藏请先登录的提示弹出层的标题栏
+	$('#error').dialog('widget').find('.ui-widget-header').hide();
+	
+	//只有登录的用户才能提问
+	$('#question_button').click(function(){
+		//如果有cookie则说明已经登录
+		if ($.cookie('user')) {
+			//弹出提问窗体
+
+		}
+		else {
+			$('#error').dialog('open');
+		}
+	});
 
 	//cookie的使用
 	$('#menber,#logout').hide();
@@ -41,6 +72,8 @@
 
 	//隐藏dialog的标题栏
 	$('#loading').dialog('widget').find('.ui-widget-header').hide();
+
+	
 
 	$("#reg").dialog({
 		autoOpen:false,
