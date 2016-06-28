@@ -123,3 +123,27 @@ body{
 	position: relative;
 	top:2px;
 }
+
+#main{
+	width: 800px;
+	margin: 0 auto;
+	padding: 10px 0 0 0;
+}
+.main_left{
+	width: 580px;
+	float: left;
+}
+.main_right{
+	width: 200px;
+	float: right;
+}
+#tabs{
+	border:none;
+}
+#ui-tabs-1,#ui-tabs-2,#ui-tabs-3{
+	border:1px solid #aaa;
+	border-top: none;
+	position:relative;
+	top: -2px;
+
+}

@@ -284,6 +284,7 @@
 					if (responseText) {
 						$('#login').dialog('widget').find('button').eq(1).button('enable');
 						$('#loading').css('background', 'url(img/success.gif) no-repeat 20px center').html('登录成功...');
+						//如果勾选了登录7天，则设置cookie的有效期为7，不勾选有效期则为会话结束时
 						if ($('#expires').is(':checked')) {
 							$.cookie('user', $('#login_user').val(), {
 								expires : 7,
@@ -363,5 +364,12 @@
 		}
 	});	
 
+	//选项卡方法
+	$('#tabs').tabs({
 
+	});
+
+	$('#accordion').accordion({
+
+	});
 })
