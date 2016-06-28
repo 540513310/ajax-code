@@ -53,7 +53,32 @@
 		height : 360,
 		buttons : {
 			'发布' : function () {
-				$(this).submit();
+				$(this).ajaxSubmit({
+					url : 'add_content.php',
+					type : 'POST',
+					data : {
+						user : $.cookie('user'),
+						content : $('.uEditorIframe').contents().find('#iframeBody').html(),
+					},
+					beforeSubmit : function (formData, jqForm, options) {
+						$('#loading').dialog('open');
+						$('#question').dialog('widget').find('button').eq(1).button('disable');
+					},
+					success : function (responseText, statusText) {
+						if (responseText) {
+							$('#question').dialog('widget').find('button').eq(1).button('enable');
+							$('#loading').css('background', 'url(img/success.gif) no-repeat 20px center').html('数据新增成功...');
+							setTimeout(function () {
+								$('#loading').dialog('close');
+								$('#question').dialog('close');
+								$('#question').resetForm();
+								// 把问题描述栏清空
+								$('.uEditorIframe').contents().find('#iframeBody').html('请输入问题描述！');
+								$('#loading').css('background', 'url(img/loading.gif) no-repeat 20px center').html('数据交互中...');
+							}, 1000);
+						}
+					},
+				});
 			}
 		}
 	});
